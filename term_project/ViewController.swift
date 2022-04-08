@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     //@IBOutlet weak var longLabel: Label1!
     //@IBOutlet weak var latLabel: Label2!
     
+    @IBOutlet weak var latLabel: UILabel!
+    @IBOutlet weak var lonLabel: UILabel!
     let locationManager = CLLocationManager()
     
     
@@ -26,8 +28,8 @@ class ViewController: UIViewController {
             currentLocation = locationManager.location
             print(currentLocation.coordinate.longitude)
             print(currentLocation.coordinate.latitude)
-            //label1.text = "\(currentLocation.coordinate.longitude)"
-            //label2.text = "\(currentLocation.coordinate.latitude)"
+            latLabel.text = "\(currentLocation.coordinate.latitude)"
+            lonLabel.text = "\(currentLocation.coordinate.longitude)"
         }
     }
 
