@@ -8,5 +8,8 @@
 import Foundation
 
 func kelvinToFahrenheit(temperature: Double) -> Double {
+    if temperature == -1 {
+        return -1
+    }
     return (temperature - 273.15) * 9/5 + 32
 }

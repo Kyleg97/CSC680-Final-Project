@@ -36,6 +36,7 @@ class ViewController: UIViewController {
                 do {
                     let weather = try await networking.fetchWeather(lat: "\(lat)", lon: "\(lon)")
                     print(weather)
+                    print("Weather temp: \(kelvinToFahrenheit(temperature: weather.main.temp ?? -1))")
                 } catch {
                     print(error)
                 }
