@@ -15,6 +15,7 @@
 		B5A0D77C27FCC24500A8EB92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A0D77A27FCC24500A8EB92 /* Main.storyboard */; };
 		B5A0D77E27FCC24800A8EB92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A0D77D27FCC24800A8EB92 /* Assets.xcassets */; };
 		B5A0D78127FCC24800A8EB92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A0D77F27FCC24800A8EB92 /* LaunchScreen.storyboard */; };
+		B5AB0ADF2800F181009A0FC1 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AB0ADE2800F181009A0FC1 /* Keys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B5A0D77D27FCC24800A8EB92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5A0D78027FCC24800A8EB92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5A0D78227FCC24800A8EB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5AB0ADE2800F181009A0FC1 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				B5A0D77A27FCC24500A8EB92 /* Main.storyboard */,
 				B572D5FA2800D1D000A050BE /* WeatherModel.swift */,
 				B572D5FC2800D2CC00A050BE /* Networking.swift */,
+				B5AB0ADE2800F181009A0FC1 /* Keys.swift */,
 				B5A0D77D27FCC24800A8EB92 /* Assets.xcassets */,
 				B5A0D77F27FCC24800A8EB92 /* LaunchScreen.storyboard */,
 				B5A0D78227FCC24800A8EB92 /* Info.plist */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5A0D77927FCC24500A8EB92 /* ViewController.swift in Sources */,
+				B5AB0ADF2800F181009A0FC1 /* Keys.swift in Sources */,
 				B572D5FD2800D2CC00A050BE /* Networking.swift in Sources */,
 				B5A0D77527FCC24500A8EB92 /* AppDelegate.swift in Sources */,
 				B572D5FB2800D1D000A050BE /* WeatherModel.swift in Sources */,

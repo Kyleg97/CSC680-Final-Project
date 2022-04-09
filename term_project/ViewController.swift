@@ -9,14 +9,14 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController {
-
-    //@IBOutlet weak var longLabel: Label1!
-    //@IBOutlet weak var latLabel: Label2!
     
     @IBOutlet weak var latLabel: UILabel!
     @IBOutlet weak var lonLabel: UILabel!
-    let locationManager = CLLocationManager()
     
+    let locationManager = CLLocationManager()
+    let networking = Networking()
+    
+    var weatherModel: WeatherModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,22 @@ class ViewController: UIViewController {
             print(currentLocation.coordinate.latitude)
             latLabel.text = "\(currentLocation.coordinate.latitude)"
             lonLabel.text = "\(currentLocation.coordinate.longitude)"
+            let lat = currentLocation.coordinate.latitude
+            let lon = currentLocation.coordinate.longitude
+            Task {
+                do {
+                    let weather = try await networking.fetchWeather(lat: "\(lat)", lon: "\(lon)")
+                    print(weather)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func update(with weatherModel: WeatherModel) {
+        DispatchQueue.main.async {
+            self.weatherModel = weatherModel
         }
     }
 
