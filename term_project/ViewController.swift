@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var latLabel: UILabel!
     @IBOutlet weak var lonLabel: UILabel!
     
+    @IBOutlet weak var cityLabel: UILabel!
+    
     let locationManager = CLLocationManager()
     let networking = Networking()
     
@@ -32,11 +34,25 @@ class ViewController: UIViewController {
             lonLabel.text = "\(currentLocation.coordinate.longitude)"
             let lat = currentLocation.coordinate.latitude
             let lon = currentLocation.coordinate.longitude
+            let geoCoder = CLGeocoder()
+            let location = CLLocation(latitude: lat, longitude: lon)
+            geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, _) -> Void in
+                placemarks?.forEach { (placemark) in
+                    self.cityLabel.text = placemark.locality!
+                }
+            })
             Task {
                 do {
                     let weather = try await networking.fetchWeather(lat: "\(lat)", lon: "\(lon)")
                     print(weather)
                     print("Weather temp: \(kelvinToFahrenheit(temperature: weather.main.temp ?? -1))")
+                    let suggestion = CreateSuggestion()
+                    let outfit = suggestion.calculateSuggestion(weather: weather)
+                    print(outfit.outerwear)
+                    print(outfit.bottom)
+                    print(outfit.top)
+                    print(outfit.shoes)
+                    print(outfit.accessory)
                 } catch {
                     print(error)
                 }

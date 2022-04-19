@@ -24,6 +24,7 @@ enum Outerwear {
     case hoodie
     case windbreaker
     case jacket
+    case vest
 }
 
 enum Shoes {
@@ -69,16 +70,30 @@ class CreateSuggestion {
     
     func calculateSuggestion(weather: WeatherModel) -> Outfit {
         var temp = weather.main.temp ?? -1
-        var tempMin = weather.main.tempMin ?? -1
-        var tempMax = weather.main.tempMax ?? -1
-        var averageTemp = (tempMin + tempMax) / 2
-        var wind = weather.wind.speed ?? -1
-        var gust = weather.wind.gust ?? -1
-        var humidity = weather.main.humidity ?? -1
-        var clouds = weather.clouds.all ?? -1
+        let tempMin = weather.main.tempMin ?? -1
+        let tempMax = weather.main.tempMax ?? -1
+        let averageTemp = (tempMin + tempMax) / 2
+        let wind = weather.wind.speed ?? -1
+        let gust = weather.wind.gust ?? -1
+        let humidity = weather.main.humidity ?? -1
+        let clouds = weather.clouds.all ?? -1
         
-        var outfit = Outfit()
+        let outfit = Outfit()
+        if (tempMin != -1 && tempMax != -1) {
+            temp = kelvinToFahrenheit(temperature: averageTemp)
+            print("Average temp: \(temp)")
+        } else if (temp != -1) {
+            temp = kelvinToFahrenheit(temperature: temp)
+            print("Temp: \(temp)")
+        } else {
+            return outfit
+        }
         
+        print("Gust: \(gust)")
+        print("Humidity: \(humidity)")
+        print("Clouds: \(clouds)")
+        
+        outfit.accessory.append(Accessory.sunscreen)
         if (temp < 120) {
             outfit.top.append(Tops.tshirt)
             outfit.bottom = Bottoms.shorts
@@ -104,6 +119,16 @@ class CreateSuggestion {
                 outfit.bottom = Bottoms.pants
             }
             outfit.outerwear.append(Outerwear.hoodie)
+        }
+        if (temp < 55) {
+            outfit.shoes = Shoes.boots
+            outfit.bottom = Bottoms.jeans
+            outfit.outerwear.append(Outerwear.jacket)
+        }
+        if (temp < 45) {
+            outfit.accessory.append(Accessory.beanie)
+            outfit.accessory.append(Accessory.gloves)
+            outfit.accessory.append(Accessory.scarf)
         }
         return outfit
     }
