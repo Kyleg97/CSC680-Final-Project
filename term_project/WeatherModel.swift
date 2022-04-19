@@ -5,8 +5,6 @@
 //  Created by JPL-ST-SPRING2021 on 4/8/22.
 //
 
-import Foundation
-
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
