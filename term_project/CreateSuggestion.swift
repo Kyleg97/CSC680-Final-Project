@@ -44,6 +44,8 @@ enum Accessory {
 
 class CreateSuggestion {
     
+    var outfits: [Outfit] = []
+    
     class Outfit {
         var top: [Tops]
         var bottom: Bottoms
