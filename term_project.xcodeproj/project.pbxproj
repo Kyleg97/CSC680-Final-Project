@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B53E67632802265800D10E33 /* CreateSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E67622802265800D10E33 /* CreateSuggestion.swift */; };
+		B548CF95280F723D00818701 /* AirPollutionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548CF94280F723D00818701 /* AirPollutionModel.swift */; };
 		B572D5FB2800D1D000A050BE /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572D5FA2800D1D000A050BE /* WeatherModel.swift */; };
 		B572D5FD2800D2CC00A050BE /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572D5FC2800D2CC00A050BE /* Networking.swift */; };
+		B5984D6D280F6CAF00DE0CF1 /* OneCallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5984D6C280F6CAF00DE0CF1 /* OneCallModel.swift */; };
 		B5A0D77527FCC24500A8EB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D77427FCC24500A8EB92 /* AppDelegate.swift */; };
 		B5A0D77727FCC24500A8EB92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D77627FCC24500A8EB92 /* SceneDelegate.swift */; };
 		B5A0D77927FCC24500A8EB92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D77827FCC24500A8EB92 /* ViewController.swift */; };
@@ -22,8 +24,10 @@
 
 /* Begin PBXFileReference section */
 		B53E67622802265800D10E33 /* CreateSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSuggestion.swift; sourceTree = "<group>"; };
+		B548CF94280F723D00818701 /* AirPollutionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPollutionModel.swift; sourceTree = "<group>"; };
 		B572D5FA2800D1D000A050BE /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		B572D5FC2800D2CC00A050BE /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		B5984D6C280F6CAF00DE0CF1 /* OneCallModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCallModel.swift; sourceTree = "<group>"; };
 		B5A0D77127FCC24500A8EB92 /* term_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = term_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A0D77427FCC24500A8EB92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5A0D77627FCC24500A8EB92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				B5A0D77427FCC24500A8EB92 /* AppDelegate.swift */,
 				B5A0D77627FCC24500A8EB92 /* SceneDelegate.swift */,
 				B5A0D77827FCC24500A8EB92 /* ViewController.swift */,
+				B548CF94280F723D00818701 /* AirPollutionModel.swift */,
+				B5984D6C280F6CAF00DE0CF1 /* OneCallModel.swift */,
 				B5AB0AE228014A4E009A0FC1 /* Keys.swift */,
 				B5A0D77A27FCC24500A8EB92 /* Main.storyboard */,
 				B572D5FA2800D1D000A050BE /* WeatherModel.swift */,
@@ -156,9 +162,11 @@
 				B5AB0AE528014ABF009A0FC1 /* HelperFunctions.swift in Sources */,
 				B5A0D77927FCC24500A8EB92 /* ViewController.swift in Sources */,
 				B5AB0AE328014A4E009A0FC1 /* Keys.swift in Sources */,
+				B548CF95280F723D00818701 /* AirPollutionModel.swift in Sources */,
 				B572D5FD2800D2CC00A050BE /* Networking.swift in Sources */,
 				B5A0D77527FCC24500A8EB92 /* AppDelegate.swift in Sources */,
 				B53E67632802265800D10E33 /* CreateSuggestion.swift in Sources */,
+				B5984D6D280F6CAF00DE0CF1 /* OneCallModel.swift in Sources */,
 				B572D5FB2800D1D000A050BE /* WeatherModel.swift in Sources */,
 				B5A0D77727FCC24500A8EB92 /* SceneDelegate.swift in Sources */,
 			);

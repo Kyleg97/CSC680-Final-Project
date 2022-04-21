@@ -47,11 +47,12 @@ class ViewController: UIViewController {
                     let weather = try await networking.fetchWeather(lat: "\(lat)", lon: "\(lon)")
                     let onecall = try await networking.fetchOneCall(lat: "\(lat)", lon: "\(lat)")
                     let airPollution = try await networking.fetchAirPollution(lat: "\(lat)", lon: "\(lon)")
+                    // print(weather)
                     let temp = kelvinToFahrenheit(temperature: weather.main.temp!)
                     let wind = weather.wind.speed
                     let aqi = airPollution.list?[0].main?.aqi
-                    tempLabel.text = "\(temp)"
-                    windLabel.text = "\(wind!)"
+                    tempLabel.text = "\(temp) F°"
+                    windLabel.text = "\(wind!) mph"
                     switch(aqi) {
                     case 1:
                         aqiLabel.text = "Good"
