@@ -21,6 +21,7 @@ struct Networking {
      
     func fetchOneCall(lat: String, lon: String) async throws -> OneCallModel {
         let url = URL(string: "\(baseURLString)onecall?lat=\(lat)&lon=\(lon)&appid=\(api_key)")!
+        print(url)
         let (data,_) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
         return try decoder.decode(OneCallModel.self, from: data)

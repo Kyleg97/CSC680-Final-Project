@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var aqiLabel: UILabel!
+    @IBOutlet weak var uviLabel: UILabel!
+    @IBOutlet weak var uviDescLabel: UILabel!
     
     let locationManager = CLLocationManager()
     let networking = Networking()
@@ -45,29 +47,55 @@ class ViewController: UIViewController {
             Task {
                 do {
                     let weather = try await networking.fetchWeather(lat: "\(lat)", lon: "\(lon)")
-                    let onecall = try await networking.fetchOneCall(lat: "\(lat)", lon: "\(lat)")
+                    let onecall = try await networking.fetchOneCall(lat: "\(lat)", lon: "\(lon)")
+                    print(onecall)
                     let airPollution = try await networking.fetchAirPollution(lat: "\(lat)", lon: "\(lon)")
                     // print(weather)
-                    let temp = kelvinToFahrenheit(temperature: weather.main.temp!)
-                    let wind = weather.wind.speed
+                    // let temp = kelvinToFahrenheit(temperature: weather.main.temp!)
+                    let temp = kelvinToFahrenheit(temperature: onecall.current!.temp!)
+                    // let wind = weather.wind.speed
+                    let wind = onecall.current!.windSpeed
+                    let uvi = onecall.current!.uvi!
                     let aqi = airPollution.list?[0].main?.aqi
                     tempLabel.text = "\(temp) F°"
                     windLabel.text = "\(wind!) mph"
                     switch(aqi) {
                     case 1:
                         aqiLabel.text = "Good"
+                        aqiLabel.textColor = UIColor.green
                     case 2:
                         aqiLabel.text = "Fair"
+                        aqiLabel.textColor = UIColor.yellow
                     case 3:
                         aqiLabel.text = "Moderate"
+                        aqiLabel.textColor = UIColor.orange
                     case 4:
                         aqiLabel.text = "Poor"
+                        aqiLabel.textColor = UIColor.red
                     case 5:
                         aqiLabel.text = "Very Poor"
+                        aqiLabel.textColor = UIColor.purple
                     case .none:
                         aqiLabel.text = "Err"
                     case .some(_):
                         aqiLabel.text = "uhh idk"
+                    }
+                    uviLabel.text = "\(uvi)"
+                    if (uvi > 10) {
+                        uviLabel.textColor = UIColor.purple
+                        uviDescLabel.text = "(Extremely high)"
+                    } else if (uvi > 7) {
+                        uviLabel.textColor = UIColor.red
+                        uviDescLabel.text = "(Very high)"
+                    } else if (uvi > 5) {
+                        uviLabel.textColor = UIColor.orange
+                        uviDescLabel.text = "(High)"
+                    } else if (uvi > 2) {
+                        uviLabel.textColor = UIColor.yellow
+                        uviDescLabel.text = "(Medium)"
+                    } else {
+                        uviLabel.textColor = UIColor.green
+                        uviDescLabel.text = "(Low)"
                     }
                     //aqiLabel.text = "\(aqi!)"
                     print(airPollution)
