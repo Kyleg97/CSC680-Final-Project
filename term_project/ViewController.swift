@@ -10,6 +10,8 @@ import CoreLocation
 
 class ViewController: UIViewController {
     
+    var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var latLonLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
@@ -17,6 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var aqiLabel: UILabel!
     @IBOutlet weak var uviLabel: UILabel!
     @IBOutlet weak var uviDescLabel: UILabel!
+    
+    
+    @IBOutlet weak var RecommendationButton: UIButton!
     
     let locationManager = CLLocationManager()
     let networking = Networking()
@@ -26,6 +31,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)*/
+        
         locationManager.requestWhenInUseAuthorization()
         var currentLocation: CLLocation!
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways {
@@ -44,12 +56,21 @@ class ViewController: UIViewController {
                     self.cityLabel.text = placemark.locality!
                 }
             })
+            
+            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(activityIndicator)
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            
             Task {
                 do {
+                    activityIndicator.startAnimating()
                     let weather = try await networking.fetchWeather(lat: "\(lat)", lon: "\(lon)")
                     let onecall = try await networking.fetchOneCall(lat: "\(lat)", lon: "\(lon)")
                     print(onecall)
                     let airPollution = try await networking.fetchAirPollution(lat: "\(lat)", lon: "\(lon)")
+                    self.activityIndicator.stopAnimating()
+                    //self.view.willRemoveSubview(blurEffectView)
                     // print(weather)
                     // let temp = kelvinToFahrenheit(temperature: weather.main.temp!)
                     let temp = kelvinToFahrenheit(temperature: onecall.current!.temp!)
