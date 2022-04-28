@@ -31,12 +31,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        // blur the background while making the API call
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView)*/
+        blurEffectView.tag = 100
+        view.addSubview(blurEffectView)
         
         locationManager.requestWhenInUseAuthorization()
         var currentLocation: CLLocation!
@@ -70,6 +71,8 @@ class ViewController: UIViewController {
                     print(onecall)
                     let airPollution = try await networking.fetchAirPollution(lat: "\(lat)", lon: "\(lon)")
                     self.activityIndicator.stopAnimating()
+                    // remove blur subview
+                    self.view.viewWithTag(100)?.removeFromSuperview()
                     //self.view.willRemoveSubview(blurEffectView)
                     // print(weather)
                     // let temp = kelvinToFahrenheit(temperature: weather.main.temp!)
