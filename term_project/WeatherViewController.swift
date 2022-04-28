@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
     var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
